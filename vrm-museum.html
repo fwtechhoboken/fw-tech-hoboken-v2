@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRM-Museum — FW Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --gold: #fbbf24;
+    --green: #6ee7b7;
+    --purple: #818cf8;
+    --pink: #f472b6;
+    --muted: #6b6b80;
+    --border: #242428;
+    --mono: 'DM Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: #e8e8ec;
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .museum-header {
+    text-align: center;
+    padding: 80px 24px 48px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .museum-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .museum-title {
+    font-family: var(--display);
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 60px rgba(251,191,36,0.3);
+  }
+
+  .museum-sub {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    max-width: 480px;
+    margin: 0 auto 8px;
+    line-height: 1.8;
+  }
+
+  .museum-sub span {
+    color: var(--gold);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .back-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    text-align: center;
+    padding: 64px 24px 40px;
+  }
+
+  .section-tag {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+
+  .section-title.gold { color: var(--gold); }
+  .section-title.green { color: var(--green); }
+  .section-title.purple { color: var(--purple); }
+  .section-title.pink { color: var(--pink); }
+
+  /* ── GRID ── */
+  .museum-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+
+  .exhibit {
+    background: #111114;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .exhibit:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .exhibit img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .exhibit-caption {
+    padding: 16px;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: #c8c8d4;
+    line-height: 1.7;
+    border-top: 1px solid var(--border);
+  }
+
+  .exhibit-num {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  /* ── DIVIDER ── */
+  .amber-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+    margin: 16px 0;
+  }
+
+  /* ── FOOTER ── */
+  .museum-footer {
+    text-align: center;
+    padding: 48px 24px 64px;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    line-height: 2;
+  }
+
+  .museum-footer span { color: var(--gold); }
+
+  /* ── LORE BLOCK ── */
+  .lore-block {
+    max-width: 600px;
+    margin: 0 auto 64px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .lore-text {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+
+  .lore-text .highlight { color: #e8e8ec; }
+  .lore-text .gold { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .museum-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="museum-header">
+  <div class="museum-eyebrow">[ classified section — you found it ]</div>
+  <div class="museum-title">VRM-Museum</div>
+  <div class="museum-sub">
+    congrats. you met the museum of <span>FW Tech</span> — lord of the unhinged things you don't see.<br>
+    scroll down to see more of FW Tech and the ancients behind it.
+  </div>
+  <a href="index.html" class="back-link">← back to the laptop</a>
+</div>
+
+<div class="amber-divider"></div>
+
+<!-- SECTION 1 -->
+<div class="section-header">
+  <div class="section-tag">exhibit hall 01</div>
+  <div class="section-title gold">MINIONS. TONIGHT, WE STEAL THE FRAMEWORKS.</div>
+</div>
+
+<div class="museum-grid">
+
+  <div class="exhibit">
+    <img src="art1.gif" alt="spinning seal" loading="lazy"/>
+    <div class="exhibit-caption">
+      <div class="exhibit-num">EXHIBIT 001</div>
+      FW Tech waiting for a customer.
+    </div>
+  </div>
+
+  <div class="exhibit">
+    <img src="art2.gif" alt="let's seal the deal" loading="lazy"/>
+    <div class="exhibit-caption">
+      <div class="exhibit-num">EXHIBIT 002</div>
+      let's seal the deal. cash only.
+    </div>
+  </div>
+
+  <div class="exhibit">
+    <img src="art3.gif" alt="proud seal" loading="lazy"/>
+    <div class="exhibit-caption">
+      <div class="exhibit-num">EXHIBIT 003</div>
+      you when you get your laptop back, job done.
+    </div>
+  </div>
+
+  <div class="exhibit">
+    <img src="art4.gif" alt="tongue seal" loading="lazy"/>
+    <div class="exhibit-caption">
+      <div class="exhibit-num">EXHIBIT 004</div>
+      FW Tech getting the easiest laptop to work on and actually gets it done in 3 hours instead of 9. 😛
+    </div>
+  </div>
+
+</div>
+
+<div class="amber-divider"></div>
+
+<!-- SECTION 2 -->
+<div class="section-header">
+  <div class="section-tag">exhibit hall 02 — unhinged lore</div>
+  <div class="section-title purple">SEALS. TONIGHT, WE RAID THE CPU.</div>
+</div>
+
+<div class="lore-block">
+  <div class="lore-text">
+    <span class="highlight">FW Tech</span> was founded in a <span class="gold">windowless den</span> in Hoboken, NJ.<br>
+    no van. no lease. no uhauls.<br>
+    just a desk, a <span class="gold">2019 system</span>, and cables that qualify as zip codes.<br><br>
+    the IRS does not know we exist.<br>
+    Google does.<br>
+    the seals are watching.<br>
+  </div>
+</div>
+
+<div class="museum-grid" style="grid-template-columns: 1fr; max-width: 500px;">
+  <div class="exhibit">
+    <img src="art5.png" alt="unhinged otter" loading="lazy" style="height:300px;object-fit:cover;object-position:center top;"/>
+    <div class="exhibit-caption">
+      <div class="exhibit-num">EXHIBIT 005 — THE OTTER</div>
+      customer: "there is a ToS?!"<br><br>
+      me:<br><br>
+      <span style="color:var(--gold);">bruh.</span>
+    </div>
+  </div>
+</div>
+
+<div class="amber-divider"></div>
+
+<div class="museum-footer">
+  <div>VRM-Museum · FW Tech · Hoboken, NJ</div>
+  <div style="margin-top:8px;">not affiliated with any other tech company. we only do laptop cleanings, not IT.</div>
+  <div style="margin-top:8px;"><span>FW Tech likes seal.</span></div>
+  <div style="margin-top:16px;color:#242428;">Data output: 100%</div>
+</div>
+
+</body>
+</html>
